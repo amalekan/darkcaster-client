@@ -2,12 +2,13 @@
 const angular = require('angular');
 //create our application
 
-const app = angular.module('darkcaster-client', []); //setter syntax
+angular.module('darkcaster-client', []); //setter syntax
 
-app.controller('MainController', MainController);
+angular.module('darkcaster-client')
+       .controller('MainController', MainController); //getter syntax
 
-MainController.$inject =['$scope']; //magic for us
+MainController.$inject = []; //magic for us
 
-function MainController($scope){
-  $scope.message = 'hello from angular';
+function MainController(){
+  this.message = 'hello from angular';
 }
