@@ -1,7 +1,11 @@
+/*jshint esversion: 6*/
 const webpack = require('webpack');
 const path = require('path');
 
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const ImageWebpackLoader = require('')
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 /*
  * We've enabled UglifyJSPlugin for you! This minifies your app
  * in order to load faster and run less javascript.
@@ -56,6 +60,23 @@ module.exports = {
 					],
 					fallback: 'style-loader'
 				})
+			},
+
+			{
+				test: /\.(gif|png|jpe?g|svg)$/i,
+				loaders: ['file-loader?name=/images/[name].[hash].[ext]',
+									'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']
+				// loader: [
+				// 	'file-loader?name=./images/[name].[ext]',
+				// {
+				// 	loader: 'image-webpack-loader',
+				// 	query: {
+				// 		progressive:true,
+				// 		optimizationLevel: 7,
+				// 		interlaced: false
+				// 	}
+				// }
+				// ]
 			}
 		]
 	},
@@ -67,4 +88,8 @@ module.exports = {
 							filename: 'index.html',
 							template: './src/index.html'
 						})]
+						// new CopyWebpackPlugin([{
+						// 	from: './src/images',
+						// 	to: './images'
+						// }])]
 };
