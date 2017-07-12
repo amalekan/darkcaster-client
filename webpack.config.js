@@ -66,17 +66,14 @@ module.exports = {
 				test: /\.(gif|png|jpe?g|svg)$/i,
 				loaders: ['file-loader?name=/images/[name].[hash].[ext]',
 									'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']
-				// loader: [
-				// 	'file-loader?name=./images/[name].[ext]',
-				// {
-				// 	loader: 'image-webpack-loader',
-				// 	query: {
-				// 		progressive:true,
-				// 		optimizationLevel: 7,
-				// 		interlaced: false
-				// 	}
-				// }
-				// ]
+			},
+			{
+				test:/\.html$/,
+				loader: 'html-loader',
+					options: {
+						minimize: true
+					}
+				
 			}
 		]
 	},
