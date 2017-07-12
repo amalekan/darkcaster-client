@@ -11,11 +11,13 @@
     <section>
       <header>
         <p>Precipitation Probability: {{ ctrl.weatherData.precipProbability | percentage }}</p>
+        <!-- <p>Precipitation Probability : {{ ctrl.weatherData.precipProbability }}</p> -->
         <img src="https://placehold.it/50x50">
         <p>{{ ctrl.weatherData.time * 1000 | date:'medium'}}</p>
       </header>
       <main>
         <h1>Humidity: {{ctrl.weatherData.humidity | percentage }}</h1>
+        <!-- <h1>Humidity: {{ctrl.weatherData.humidity}}</h1> -->
         <div>
           <h1>Temperature: {{ctrl.weatherData.temperature | number: 0}}&deg;F</h1>
           <h2>Feels Like:{{ctrl.weatherData.apparentTemperature | number: 0}}&deg;F</h2>

@@ -1,22 +1,23 @@
 /*jshint esversion: 6*/
 const angular = require('angular');
-const weatherData = require('../mocks/weather.json');
-const image = require('./images/download.jpg');
-console.log(image);
+//services
+const WeatherService = require('./services/weather.service');
 //create our application
 
 angular.module('darkcaster-client', [])
        .filter('percentage', function (){
-      return function(decimal){
-        return `${decimal*100}%`;
-      };
+          return function(decimal){
+            return `${decimal*100}%`;
+         };
        }); //setter syntax
 
-angular.module('darkcaster-client')
-       .controller('MainController', MainController); //getter syntax
-MainController.$inject = []; //magic for us
+angular.module('darkcaster-client')   //getter syntax
+       .controller('MainController', MainController)
+       .factory('WeatherService', WeatherService);
 
-function MainController(){
+MainController.$inject = ['WeatherService']; //magic for us
+
+function MainController(weather){
   this.message = 'hello from angular';
-  this.weatherData = weatherData.currently;
+  this.weatherData = weather.getCurrentWeather();
 }
