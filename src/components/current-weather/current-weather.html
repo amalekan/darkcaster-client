@@ -2,7 +2,7 @@
   <header>
     <p>Precipitation Probability: {{ $ctrl.weatherData.precipProbability | percentage }}</p>
     <!-- <p>Precipitation Probability : {{ $ctrl.weatherData.precipProbability }}</p> -->
-    <img src="https://placehold.it/50x50">
+    <img ng-src = "{{ $ctrl.imageLookup[$ctrl.weatherData.icon] }}" />
     <p>{{ $ctrl.weatherData.time * 1000 | date:'medium'}}</p>
   </header>
   <main>

@@ -1,14 +1,19 @@
+/*jshint esversion: 6 */
 const weatherData = require('../../mocks/weather.json');
-WeatherService.$inject = [];
+WeatherService.$inject = ['$http'];
 
-function WeatherService() {
-
+function WeatherService($http) {
+  const baseUrl = 'https://salty-harbor-87960.herokuapp.com/weather/';
   return {
     getCurrentWeather: getCurrently
   };
 
-  function getCurrently() {
-    return weatherData.currently;
+  function getCurrently(lat, lon) {
+    const url = `${baseUrl}${lat},${lon}`;
+    return $http.get(url)
+                 .then(response => {
+                   return response.data.currently;
+                 });
   }
 }
 

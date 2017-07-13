@@ -63,18 +63,25 @@ module.exports = {
 			},
 
 			{
-				test: /\.(gif|png|jpe?g|svg)$/i,
-				loaders: ['file-loader?name=/images/[name].[hash].[ext]',
-									'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']
-			},
-			{
+				test: /\.(gif|png|jpe?g|svg)$/,
+			// 	loader: ['file-loader?name=./images/[name].[hash][ext]',
+			// 						'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']
+			// },
+
+			loader: 'file-loader',
+			options: {
+				name: './images/[name].[hash][ext]'
+			}
+		},
+
+		{
 				test:/\.html$/,
 				loader: 'html-loader',
 					options: {
 						minimize: true
 					}
-				
-			}
+
+		}
 		]
 	},
 
