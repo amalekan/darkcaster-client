@@ -9,9 +9,9 @@ const wind = require('../../images/wind.png');
 const partlyCloudyNight = require('../../images/partly-cloudy-night.png');
 const partlyCloudyDay = require('../../images/partly-cloudy-day.png');
 const rain = require('../../images/rain.png');
-MinutelyWeatherController.$inject = ['WeatherService']; //magic for us
+HourlyWeatherController.$inject =['WeatherService'];
 
-function MinutelyWeatherController(weather){
+function HourlyWeatherController(weather) {
   this.lat = 0;
   this.lon = 0;
   this.imageLookup = {
@@ -28,11 +28,8 @@ function MinutelyWeatherController(weather){
   };
 
   this.search = function search() {
-    console.log('searching...');
-    weather.getMinutelyWeather(this.lat, this.lon)
-           .then(minutelyWeather => {this.weatherData = minutelyWeather;
-            console.log(this.weatherData);
-           });
+    weather.getHourlyWeather(this.lat, this.lon)
+           .then(hourlyWeather => this.weatherData = hourlyWeather);
   };
 }
-module.exports = MinutelyWeatherController;
+module.exports = HourlyWeatherController;

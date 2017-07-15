@@ -4,11 +4,12 @@ const angular = require('angular');
 const WeatherService = require('./services/weather.service');
 //components
 const CurrentWeatherComponent = require('./components/current-weather/');
-//create our application
+const HourlyWeatherComponent = require('./components/hourly-weather/');
 const MinutelyWeatherComponent = require('./components/minutely-weather/');
 angular.module('darkcaster-client', [])
        .factory('WeatherService', WeatherService)
        .component('currentWeather', CurrentWeatherComponent)
+       .component('hourlyWeather', HourlyWeatherComponent)
        .component('minutelyWeather', MinutelyWeatherComponent)
        .filter('percentage', function (){
           return function(decimal){
