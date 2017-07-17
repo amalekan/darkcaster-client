@@ -7,7 +7,8 @@ function WeatherService($http) {
   return {
     getCurrentWeather: getCurrently,
     getHourlyWeather: getHourly,
-    getMinutelyWeather: getMinutely
+    getMinutelyWeather: getMinutely,
+    getDailyWeather: getDaily
   };
 
   function getCurrently(lat, lon) {
@@ -32,6 +33,14 @@ function WeatherService($http) {
                  .then(response => {
                    return response.data.minutely;
                  });
+  }
+
+  function getDaily(lat, lon) {
+    const url = `${baseUrl}${lat},${lon}`;
+    return $http.get(url)
+                .then(response => {
+                  return response.data.daily;
+                });
   }
 }
 
