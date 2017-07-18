@@ -1,10 +1,10 @@
 /*jshint esversion:6 */
-CurrentWeatherController.$inject = ['WeatherService'];
-CurrentWeatherController.$inject = ['ImageService'];
+CurrentWeatherController.$inject = ['WeatherService', 'ImageService'];
 
-function CurrentWeatherController(weather){
+function CurrentWeatherController(weather, images){
   this.lat = 0;
   this.lon = 0;
+  this.imageLookup = images;
 
   this.search = function search() {
     weather.getCurrentWeather(this.lat, this.lon)

@@ -1,10 +1,10 @@
 /*jshint esversion:6 */
-MinutelyWeatherController.$inject = ['WeatherService']; //magic for us
-MinutelyWeatherController.$inject = ['ImageService'];
+MinutelyWeatherController.$inject = ['WeatherService', 'ImageService'];
 
-function MinutelyWeatherController(weather){
+function MinutelyWeatherController(weather, images){
   this.lat = 0;
   this.lon = 0;
+  this.imageLookup = images;
 
   this.search = function search() {
     weather.getMinutelyWeather(this.lat, this.lon)
