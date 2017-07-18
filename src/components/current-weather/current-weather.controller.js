@@ -4,10 +4,11 @@ CurrentWeatherController.$inject = ['WeatherService', 'ImageService'];
 function CurrentWeatherController(weather, images){
   this.lat = 0;
   this.lon = 0;
+  this.location = '';
   this.imageLookup = images;
 
   this.search = function search() {
-    weather.getCurrentWeather(this.lat, this.lon)
+    weather.getCurrentWeather(this.lat, this.lon, this.location)
            .then(currentWeather => this.weatherData = currentWeather);
 
   };

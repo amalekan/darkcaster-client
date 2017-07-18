@@ -11,32 +11,59 @@ function WeatherService($http) {
     getDailyWeather: getDaily
   };
 
-  function getCurrently(lat, lon) {
-    const url = `${baseUrl}${lat},${lon}`;
-    return $http.get(url)
-                 .then(response => {
-                   return response.data.currently;
-                 });
-  }
-
-  function getHourly(lat, lon) {
+  function getCurrently(lat, lon, location) {
+    if (location === null){
     const url = `${baseUrl}${lat},${lon}`;
     return $http.get(url)
                 .then(response => {
                   return response.data.hourly;
                 });
+    }
+    const url = `${baseUrl}location/${location}`;
+    return $http.get(url)
+                .then(response => {
+                  return response.data.currently;
+                });
   }
 
-  function getMinutely(lat, lon) {
+  function getHourly(lat, lon, location) {
+    if (location === null){
     const url = `${baseUrl}${lat},${lon}`;
     return $http.get(url)
-                 .then(response => {
-                   return response.data.minutely;
-                 });
+                .then(response => {
+                  return response.data.hourly;
+                });
+    }
+    const url = `${baseUrl}location/${location}`;
+    return $http.get(url)
+                .then(response => {
+                  return response.data.hourly;
+                });
+  }
+  function getMinutely(lat, lon, location) {
+    if (location === null){
+    const url = `${baseUrl}${lat},${lon}`;
+    return $http.get(url)
+                .then(response => {
+                  return response.data.hourly;
+                });
+    }
+    const url = `${baseUrl}location/${location}`;
+    return $http.get(url)
+                .then(response => {
+                  return response.data.minutely;
+                });
   }
 
-  function getDaily(lat, lon) {
+  function getDaily(lat, lon, location) {
+    if (location === null){
     const url = `${baseUrl}${lat},${lon}`;
+    return $http.get(url)
+                .then(response => {
+                  return response.data.hourly;
+                });
+    }
+    const url = `${baseUrl}location/${location}`;
     return $http.get(url)
                 .then(response => {
                   return response.data.daily;
