@@ -1,16 +1,11 @@
 /*jshint esversion:6 */
-CurrentWeatherController.$inject = ['WeatherService', 'ImageService'];
+CurrentWeatherController.$inject = ['ImageService'];
 
-function CurrentWeatherController(weather, images){
+function CurrentWeatherController(images){
   this.lat = 0;
   this.lon = 0;
   this.location = '';
-  this.imageLookup = images;
+  this.imageLookup = images.lookUp;
 
-  this.search = function search() {
-    weather.getCurrentWeather(this.lat, this.lon, this.location)
-           .then(currentWeather => this.weatherData = currentWeather);
-
-  };
 }
 module.exports = CurrentWeatherController;

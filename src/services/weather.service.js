@@ -1,72 +1,24 @@
 /*jshint esversion: 6 */
-const weatherData = require('../../mocks/weather.json');
 WeatherService.$inject = ['$http'];
 
 function WeatherService($http) {
   const baseUrl = 'https://salty-harbor-87960.herokuapp.com/weather/';
   return {
-    getCurrentWeather: getCurrently,
-    getHourlyWeather: getHourly,
-    getMinutelyWeather: getMinutely,
-    getDailyWeather: getDaily
+    get: getAll
   };
 
-  function getCurrently(lat, lon, location) {
-    if (location === null){
+  function getAll(lat, lon, location) {
+    if (location == ''){
     const url = `${baseUrl}${lat},${lon}`;
     return $http.get(url)
                 .then(response => {
-                  return response.data.hourly;
+                  return response.data;
                 });
     }
     const url = `${baseUrl}location/${location}`;
     return $http.get(url)
                 .then(response => {
-                  return response.data.currently;
-                });
-  }
-
-  function getHourly(lat, lon, location) {
-    if (location === null){
-    const url = `${baseUrl}${lat},${lon}`;
-    return $http.get(url)
-                .then(response => {
-                  return response.data.hourly;
-                });
-    }
-    const url = `${baseUrl}location/${location}`;
-    return $http.get(url)
-                .then(response => {
-                  return response.data.hourly;
-                });
-  }
-  function getMinutely(lat, lon, location) {
-    if (location === null){
-    const url = `${baseUrl}${lat},${lon}`;
-    return $http.get(url)
-                .then(response => {
-                  return response.data.hourly;
-                });
-    }
-    const url = `${baseUrl}location/${location}`;
-    return $http.get(url)
-                .then(response => {
-                  return response.data.minutely;
-                });
-  }
-
-  function getDaily(lat, lon, location) {
-    if (location === null){
-    const url = `${baseUrl}${lat},${lon}`;
-    return $http.get(url)
-                .then(response => {
-                  return response.data.hourly;
-                });
-    }
-    const url = `${baseUrl}location/${location}`;
-    return $http.get(url)
-                .then(response => {
-                  return response.data.daily;
+                  return response.data;
                 });
   }
 }

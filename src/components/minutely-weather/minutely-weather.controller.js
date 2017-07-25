@@ -1,16 +1,16 @@
 /*jshint esversion:6 */
-MinutelyWeatherController.$inject = ['WeatherService', 'ImageService'];
+MinutelyWeatherController.$inject = ['ImageService'];
 
-function MinutelyWeatherController(weather, images){
+function MinutelyWeatherController(images){
   this.lat = 0;
   this.lon = 0;
   this.location ='';
-  this.imageLookup = images;
+  this.imageLookup = images.lookUp;
 
-  this.search = function search() {
-    weather.getMinutelyWeather(this.lat, this.lon, this.location)
-           .then(minutelyWeather => {this.weatherData = minutelyWeather;
-           });
-  };
+  // this.search = function search() {
+  //   weather.getMinutelyWeather(this.lat, this.lon, this.location)
+  //          .then(minutelyWeather => {this.weatherData = minutelyWeather;
+  //          });
+  // };
 }
 module.exports = MinutelyWeatherController;

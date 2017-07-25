@@ -1,24 +1,7 @@
-<section>
-  <div>
-    <label>Latitude:</label>
-    <input type="number" ng-model = '$ctrl.lat'/>
-  </div>
-  <div>
-    <label>Longitude:</label>
-    <input type="number" ng-model = '$ctrl.lon'/>
-  </div>
-  <div>
-    <label>Location:</label>
-    <input type="text" ng-model = '$ctrl.location'/>
-  </div>
-  <div>
-    <button type = 'button' ng-click ='$ctrl.search()'>Search</button>
-  </div>
-</section>
-<section ng-if = '$ctrl.weatherData'>
+<section ng-if = '$ctrl.weather'>
   <main>
-    <h1>Summary: {{$ctrl.weatherData.summary}}</h1>
-    <img ng-src="{{$ctrl.imageLookup[$ctrl.weatherData.icon]}}"/>
+    <h1>Summary: {{$ctrl.weather.summary}}</h1>
+    <img ng-src="{{$ctrl.imageLookup[$ctrl.weather.icon] || $ctrl.missingImage}}"/>
     <table cellspacing = '10'>
       <tr>
         <th align = 'center'>Time</th>
@@ -28,7 +11,7 @@
         <th align = 'center'>Humidity</th>
         <th align = 'center'>Precipitation Probability</th>
       </tr>
-      <tr ng-repeat = 'x in $ctrl.weatherData.data'>
+      <tr ng-repeat = 'x in $ctrl.weather.data'>
         <td align = 'center'>{{x.time * 1000 | date: 'hh:mm a'}}</td>
         <td align = 'center'>{{x.summary}}</td>
         <td align = 'center'>{{x.temperature | number: 0}}&deg;F</td>

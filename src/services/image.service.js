@@ -9,9 +9,10 @@ const wind = require('../images/wind.png');
 const partlyCloudyNight = require('../images/partly-cloudy-night.png');
 const partlyCloudyDay = require('../images/partly-cloudy-day.png');
 const rain = require('../images/rain.png');
+const missingImage = require('../images/missing.png');
 
 function ImageService() {
-  return {
+  const imageLookup = {
     'clear-Day': clearDay,
     'clear-night': clearNight,
     'snow': snow,
@@ -22,6 +23,10 @@ function ImageService() {
     'wind': wind,
     'partly-cloudy-night': partlyCloudyNight,
     'partly-cloudy-day': partlyCloudyDay
+  };
+  return {
+    lookUp: imageLookup,
+    missing: missingImage
   };
 }
 
