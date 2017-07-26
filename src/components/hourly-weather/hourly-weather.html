@@ -3,6 +3,7 @@
   <h2 style= 'text-decoration: underline;'>Hourly Forecast</h2>
 </header>
   <main align = 'center'>
+    <img ng-src="{{ $ctrl.imageLookup[$ctrl.weather.icon] }}" width ='128' height = '128'/>
     <h3>{{$ctrl.weather.summary}}</h3>
     <ul style ="list-style: none; display: inline-block;" ng-repeat = 'x in $ctrl.weather.data' align = 'center'>
         <li style = 'font-weight: bold;'>{{x.time * 1000 | date: 'h:mm a'}}</li>
