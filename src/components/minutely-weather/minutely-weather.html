@@ -1,17 +1,18 @@
-<section ng-if = '$ctrl.weather'>
-  <main>
-    <img ng-src = "{{ $ctrl.imageLookup[$ctrl.weather.icon] || $ctrl.missingImage }}" />
-    <!-- <p>{{ $ctrl.weather.time * 1000 | date:'medium'}}</p> -->
-    <h1>Summary: {{$ctrl.weather.summary}}</h1>
-    <table cellspacing = '10'>
-      <tr>
-      <th align='center'>Time</th>
-      <th align ='center'>Precipitation Probability</th>
-      </tr>
+<section ng-if = '$ctrl.weather' align = 'center'>
+  <main align = 'center'>
+    <a name = 'minutely'><h2 style = 'text-decoration: underline;'>Minutely Forecast</h2></a>
+    <img ng-src="{{ $ctrl.imageLookup[$ctrl.weather.icon] }}" width ='128' height = '128'>
+    <h3>{{$ctrl.weather.summary}}</h3>
+    <br>
+    <h4>Precipitation Probabilities by the minute</h4>
+    <div style = 'column-count:4;'>
+    <table cellspacing = '2' align = 'center' style ='column-count: 4'>
       <tr ng-repeat = 'x in $ctrl.weather.data'>
-        <td align='center'>{{x.time * 1000 | date:'hh:mm a' }}</td>
+        <td align='center' style = 'font-weight: bold;'>{{x.time * 1000 | date:'hh:mm a' }}</td>
         <td align ='center'>{{x.precipProbability | percentage}}</td>
       </tr>
     </table>
+    </div>
   </main>
 </section>
+<br>

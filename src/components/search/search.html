@@ -1,17 +1,17 @@
-<section>
-  <div>
-    <label>Latitude:</label>
+<h1 align="center">Get the weather!</h1>
+<section align="center">
+  <!-- <div>
+    <label style="font-weight:bold;">Latitude:</label>
     <input type="text" ng-model='$ctrl.lat' />
   </div>
   <div>
-    <label>Longitude:</label>
+    <label style="font-weight:bold;">Longitude:</label>
     <input type="text" ng-model="$ctrl.lon" />
-  </div>
+  </div> -->
   <div>
-    <label>Location:</label>
+    <label style = "font-weight: bold;">Enter a Location:</label>
     <input type="text" ng-model="$ctrl.location"/>
+    <button type ='submit' ng-submit = '$ctrl.search()' ng-click='$ctrl.search()'>Search</button>
   </div>
-  <div>
-    <button ng-click='$ctrl.search()'>Search</button>
-  </div>
+  <p>(You may use a zip code, city/state, or an address)</p>
 </section>

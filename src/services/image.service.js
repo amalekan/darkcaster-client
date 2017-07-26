@@ -13,7 +13,7 @@ const missingImage = require('../images/missing.png');
 
 function ImageService() {
   const imageLookup = {
-    'clear-Day': clearDay,
+    'clear-day': clearDay,
     'clear-night': clearNight,
     'snow': snow,
     'fog': fog,

@@ -1,10 +1,11 @@
-<section ng-if = '$ctrl.weather'>
+<section ng-if = '$ctrl.weather' align = 'center'>
+  <h2 style = 'text-decoration: underline;' id ='daily'>Daily Forecast</h2>
   <main>
-    <img ng-src="{{$ctrl.imageLookup[$ctrl.weather.icon]}}"/>
-    <h1>Summary: {{$ctrl.weather.summary}}</h1>
-    <ul style ='list-style: none;' ng-repeat = 'x in $ctrl.weather.data'>
-      <li>Day: {{x.time * 1000 | date: 'EEEE'}}</li>
-      <li>Summary: {{ x.summary}}</li>
+    <h3>{{$ctrl.weather.summary}}</h3>
+    <ul style ='list-style: none; display: inline-block;' ng-repeat = 'x in $ctrl.weather.data' aligh = 'left'>
+      <li style = 'font-weight: bold;'>{{x.time * 1000 | date: 'EEEE'}}</li>
+      <li><img ng-src="{{$ctrl.imageLookup[x.icon] }}" width = '64' height = '64'></li>
+      <li>{{x.summary}}</li>
       <li>High: {{x.temperatureMax | number: 0}}&deg;F</li>
       <li>Low: {{x.temperatureMin | number: 0}}&deg;F</li>
       <li>Precipitation Probability: {{x.precipProbability | percentage}}</li>

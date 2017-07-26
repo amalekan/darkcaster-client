@@ -1,24 +1,18 @@
-<section ng-if = '$ctrl.weather'>
-  <main>
-    <h1>Summary: {{$ctrl.weather.summary}}</h1>
-    <img ng-src="{{$ctrl.imageLookup[$ctrl.weather.icon] || $ctrl.missingImage}}"/>
-    <table cellspacing = '10'>
-      <tr>
-        <th align = 'center'>Time</th>
-        <th align = 'center'>Summary</th>
-        <th align = 'center'>Temperature</th>
-        <th align = 'center'>Feels Like</th>
-        <th align = 'center'>Humidity</th>
-        <th align = 'center'>Precipitation Probability</th>
-      </tr>
-      <tr ng-repeat = 'x in $ctrl.weather.data'>
-        <td align = 'center'>{{x.time * 1000 | date: 'hh:mm a'}}</td>
-        <td align = 'center'>{{x.summary}}</td>
-        <td align = 'center'>{{x.temperature | number: 0}}&deg;F</td>
-        <td align = 'center'>{{x.apparentTemperature | number: 0}}&deg;F</td>
-        <td align = 'center'>{{x.humidity | percentage}}</td>
-        <td align = 'center'>{{x.precipProbability | percentage}}</td>
-      </tr>
-    </table>
+<section ng-if = '$ctrl.weather' id = 'hourly'>
+<header align = 'center'>
+  <h2 style= 'text-decoration: underline;'>Hourly Forecast</h2>
+</header>
+  <main align = 'center'>
+    <h3>{{$ctrl.weather.summary}}</h3>
+    <ul style ="list-style: none; display: inline-block;" ng-repeat = 'x in $ctrl.weather.data' align = 'center'>
+        <li style = 'font-weight: bold;'>{{x.time * 1000 | date: 'h:mm a'}}</li>
+        <li><img ng-src="{{$ctrl.imageLookup[x.icon] }}" width = '64' height = '64'></li>
+        <li>{{x.summary}}</li>
+        <li>Temperature: {{x. temperature | number: 0 }}&deg;F</li>
+        <li>Feels Like: {{x.apparentTemperature | number: 0}}</li>
+        <li>Humidity: {{x.humidity | percentage}}</li>
+        <li>Precipitation Probability: {{x.precipProbability | percentage}}</li>
+      </ul>
   </main>
 </section>
+<br>

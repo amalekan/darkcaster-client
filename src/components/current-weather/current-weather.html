@@ -1,20 +1,24 @@
 <section ng-if = '$ctrl.weather'>
-  <header>
-    <p>Precipitation Probability: {{ $ctrl.weather.precipProbability | percentage }}</p>
-    <!-- <p>Precipitation Probability : {{ $ctrl.weatherData.precipProbability }}</p> -->
-    <img ng-src = "{{ $ctrl.imageLookup[$ctrl.weather.icon] }}" />
-    <p>{{ $ctrl.weather.time * 1000 | date:'medium'}}</p>
+  <nav align = 'center'>
+    <a href="#currently">Currently</a>
+    <a href="#minutely">Minutely</a>
+    <a href="#hourly">Hourly</a>
+    <a href="#daily">Daily</a>
+  </nav>
+  <header align = 'center'>
+    <h2>The date/time is {{ $ctrl.weather.time * 1000 | date:'medium'}}</h2>
+    <h1 style = 'text-decoration: underline;'>Current Weather</h1>
   </header>
-  <main>
-    <h1>Humidity: {{$ctrl.weather.humidity | percentage }}</h1>
-    <!-- <h1>Humidity: {{$ctrl.weatherData.humidity}}</h1> -->
-    <div>
-      <h1>Temperature: {{$ctrl.weather.temperature | number: 0}}&deg;F</h1>
-      <h2>Feels Like:{{$ctrl.weather.apparentTemperature | number: 0}}&deg;F</h2>
-    </div>
-    <h1>UV Index: {{$ctrl.weather.uvIndex}}</h1>
+  <main align ='center'>
+    <img ng-src = "{{ $ctrl.imageLookup[$ctrl.weather.icon] }}" width ='128' height = '128'/>
+    <h3>{{$ctrl.weather.summary}}</h3>
+    <ul style = 'list-style: none;'>
+      <li>Temperature: {{$ctrl.weather.temperature | number: 0}}&deg;F</li>
+      <li>Feels Like:{{$ctrl.weather.apparentTemperature | number: 0}}&deg;F</li>
+      <li>Humidity: {{$ctrl.weather.humidity | percentage }}</li>
+      <li>Precipitation Probability: {{ $ctrl.weather.precipProbability | percentage }}</li>
+      <li>UV Index: {{$ctrl.weather.uvIndex}}</li>
+    </ul>
   </main>
-  <footer>
-    <h1>Summary: {{$ctrl.weather.summary}}</h1>
-  </footer>
 </section>
+<br>
